@@ -8,21 +8,25 @@ public class GameStateManager : MonoBehaviour
     public Text gradesTxt;
     public Text partyingTxt;
     public Text hungerTxt;
-    public Text turnsTillGraduationTxt;
+    public Slider graduationStatusSlider;
     public Button NextWeekButton;
 
 
     private int cash = 0;
     private int grades = 100;
     private int partying = 0;
-    private int turnsTillGraduation = 8;
+    private int turnsTillGraduation = 100;
     private int hunger = 100;
 
-    // Start is called before the first frame update
+    //Start is called before the first frame update
     void Start()
     {
         Button btn = NextWeekButton.GetComponent<Button>();
         btn.onClick.AddListener(NextTurn);
+
+        Slider gradSlider = graduationStatusSlider.GetComponent<Slider>();
+        gradSlider.maxValue = turnsTillGraduation;
+        gradSlider.value = turnsTillGraduation;
     }
 
     private void NextTurn() {
@@ -42,6 +46,6 @@ public class GameStateManager : MonoBehaviour
         gradesTxt.GetComponent<UnityEngine.UI.Text>().text = grades.ToString();
         hungerTxt.GetComponent<UnityEngine.UI.Text>().text = hunger.ToString();
         partyingTxt.GetComponent<UnityEngine.UI.Text>().text = partying.ToString();
-        turnsTillGraduationTxt.GetComponent<UnityEngine.UI.Text>().text = turnsTillGraduation.ToString();
+        graduationStatusSlider.GetComponent<Slider>().value = turnsTillGraduation;
     }
 }
