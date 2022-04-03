@@ -18,13 +18,21 @@ public class GradesCard : ICard
     public Button TrashItButton {get; set;}
     public Button SaveItButton {get; set;}
 
+    private System.Random rnd = new System.Random();
+
     public GradesCard(){
+        gradesDelta = rnd.Next(5, 10);
+        partyingDelta = 0;
+        turnsTillGraduationDelta = rnd.Next(-30, -5);
+        hungerDelta = rnd.Next(-50, -5);
+        cashDelta = 0;
+
         cardTitleText = new GameObject().AddComponent<Text>();
         cardTitleText.name = "CardTitleText";
         cardTitleText.GetComponent<Text>().font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
         cardTitleText.GetComponent<Text>().fontSize = 40;
         cardTitleText.GetComponent<Text>().color = Color.black;
-        cardTitleText.text = "Test Grades Card";
+        cardTitleText.text = "Grades Card";
         cardTitleText.GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
         cardTitleText.GetComponent<RectTransform>().anchorMax = new Vector2(1, 1);
         cardTitleText.GetComponent<RectTransform>().pivot = new Vector2(0, 0);
@@ -34,7 +42,7 @@ public class GradesCard : ICard
         cardFlavorText.GetComponent<Text>().font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
         cardFlavorText.GetComponent<Text>().fontSize = 30;
         cardFlavorText.GetComponent<Text>().color = Color.black;
-        cardFlavorText.text = "Test Grades Card";
+        cardFlavorText.text = "Grades Card";
         cardFlavorText.GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
         cardFlavorText.GetComponent<RectTransform>().anchorMax = new Vector2(1, 1);
         cardFlavorText.GetComponent<RectTransform>().pivot = new Vector2(0, 0);
@@ -44,19 +52,14 @@ public class GradesCard : ICard
         cardEffectText.GetComponent<Text>().font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
         cardEffectText.GetComponent<Text>().fontSize = 30;
         cardEffectText.GetComponent<Text>().color = Color.black;
-        cardEffectText.text = "Test Grades Card";
+        cardEffectText.text = $"Card Effects:\n\n Grade Boost: {gradesDelta}\n Party Boost: {partyingDelta}\n Graduation Boost: {turnsTillGraduationDelta}\n Hunger Boost: {hungerDelta}\n Cash Boost: {cashDelta}";
         cardEffectText.GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
         cardEffectText.GetComponent<RectTransform>().anchorMax = new Vector2(1, 1);
         cardEffectText.GetComponent<RectTransform>().pivot = new Vector2(0, 0);
 
-        gradesDelta = 1;
-        partyingDelta = 2;
-        turnsTillGraduationDelta = 3;
-        hungerDelta = 4;
-
         cardBackground = new GameObject().AddComponent<Image>();
         cardBackground.name = "cardBackground";
-        cardBackground.color = Color.black;
+        cardBackground.color = Color.blue;
         cardBackground.GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
         cardBackground.GetComponent<RectTransform>().anchorMax = new Vector2(1, 1);
         cardBackground.GetComponent<RectTransform>().pivot = new Vector2(0, 0);
