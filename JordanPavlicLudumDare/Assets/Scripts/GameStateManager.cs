@@ -23,13 +23,15 @@ public class GameStateManager : MonoBehaviour
     public ICard[] hand = {null, null, null};
 
     private int cash = 5000;
+
+    private int _grades = 100;
     private int grades {
         get {
-            return grades;
+            return _grades;
         }
         set {
             if (value <= 100 && value >= 0)
-                grades = value;
+                _grades = value;
         }
         }
     private int partying = 0;
